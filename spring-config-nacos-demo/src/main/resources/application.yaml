@@ -1,0 +1,60 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        group: dev
+        username: nacos
+        password: nacos
+  profiles:
+#    激活test组配置的全部环境
+    active: test
+#    active: prod
+    group:
+      test: prod,group1,group2
+
+
+# dev环境配置
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+    import:
+      # 拉取nacos配置：傳入dataId
+      - nacos:person?group=dev
+      - classpath:dog.yaml
+      - optional:classpath:cat.yaml
+
+# prod环境配置
+---
+spring:
+  config:
+    import:
+      # 拉取nacos配置：傳入dataId
+      - nacos:person?group=prod
+    activate:
+      on-profile: prod
+
+# group1
+---
+spring:
+  config:
+    activate:
+      on-profile: group1
+test:
+  group1:
+    name: group1
+    desc: spring config group使用demo，本组为group1
+
+# group2
+---
+spring:
+  config:
+    activate:
+      on-profile: group2
+test:
+  group2:
+    name: group2
+    desc: spring config group使用demo，本组为group2
