@@ -1,0 +1,4 @@
+# ConfigData Location Resolvers
+org.springframework.boot.context.config.ConfigDataLocationResolver=com.birdsnail.configserver.YhdConfigDataLocationResolver
+# ConfigData Loaders
+org.springframework.boot.context.config.ConfigDataLoader=com.birdsnail.configserver.YhdConfigDataLoader
