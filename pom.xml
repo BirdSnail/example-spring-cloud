@@ -18,6 +18,7 @@
     <modules>
         <module>spring-config-service-demo</module>
         <module>spring-config-nacos-demo</module>
+        <module>spring-enviorment-refresh-value</module>
     </modules>
 
     <properties>
@@ -44,6 +45,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
         </dependency>
     </dependencies>
 

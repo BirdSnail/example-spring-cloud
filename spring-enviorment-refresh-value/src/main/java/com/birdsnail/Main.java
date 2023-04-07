@@ -1,18 +1,15 @@
-package com.birdsnail.configserver;
+package com.birdsnail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
-
 @SpringBootApplication
-public class StartSpringApplication {
-
+public class Main {
     public static void main(String[] args) {
-        ConfigurableApplicationContext applicationContext = SpringApplication.run(StartSpringApplication.class, args);
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
-        System.out.printf("yhd-->{name:%s}%n", environment.getProperty("yhd.name"));
-        System.out.println(environment.getProperty("dev.key1"));
+        System.out.println(environment.getProperty("yhd.name"));
     }
 }
