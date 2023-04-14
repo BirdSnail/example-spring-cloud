@@ -10,7 +10,6 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.reflect.Method;
@@ -25,6 +24,8 @@ import static org.reflections.scanners.Scanners.MethodsAnnotated;
  */
 public class UpdateValueEnvironmentPostProcessor implements EnvironmentPostProcessor {
 
+    private static String key = "sso.login.exclusions";
+
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
         easyUpdate(environment, application);
@@ -35,10 +36,10 @@ public class UpdateValueEnvironmentPostProcessor implements EnvironmentPostProce
      */
     private void easyUpdate(ConfigurableEnvironment environment, SpringApplication application) {
         MutablePropertySources propertySources = environment.getPropertySources();
-        String k = "yhd.name";
         PropertySource<?> targetSource = null;
+        // 找到key所属的PropertySource
         for (PropertySource<?> propertySource : propertySources) {
-            if (propertySource.containsProperty(k)) {
+            if (propertySource.containsProperty(key)) {
                 targetSource = propertySource;
                 break;
             }
@@ -46,30 +47,34 @@ public class UpdateValueEnvironmentPostProcessor implements EnvironmentPostProce
         if (targetSource == null) {
             return;
         }
-        String oldValue = Objects.toString(targetSource.getProperty(k), null);
+        String oldValue = Objects.toString(targetSource.getProperty(key), null);
         if (targetSource instanceof MapPropertySource source) {
-            source.getSource().put(k, getNewValue(oldValue));
+            source.getSource().put(key, getNewValue(oldValue));
         } else {
-            Map<String, Object> map = Map.of(k, getNewValue(oldValue));
-            MapPropertySource mapPropertySource = new MapPropertySource("k_source_yhd", map);
+            Map<String, Object> map = Map.of(key, getNewValue(oldValue));
+            MapPropertySource mapPropertySource = new MapPropertySource("更新后的PropertySource", map);
+            // 将我们的自定义的
             propertySources.addBefore(targetSource.getName(), mapPropertySource);
         }
     }
 
+    // 生成sso.login.exclusions的新值
     private String getNewValue(String oldValue) {
         Reflections reflections = new Reflections(
                 new ConfigurationBuilder().forPackage("com.birdsnail.controller").setScanners(MethodsAnnotated));
+        // 获取有@NotLogin注解的方法
         Set<Method> resources =
-                reflections.get(MethodsAnnotated.with(GetMapping.class).as(Method.class));
+                reflections.get(MethodsAnnotated.with(NotLogin.class).as(Method.class));
         StringBuilder sb = new StringBuilder(oldValue);
         for (Method method : resources) {
             RequestMapping requestMapping = AnnotationUtils.findAnnotation(method, RequestMapping.class);
-            if (requestMapping != null) {
+            if (requestMapping != null) { // 保证该方法是一个endPoint
                 NotLogin notLogin = AnnotationUtils.findAnnotation(method, NotLogin.class);
                 String temp = "";
                 if (notLogin != null && notLogin.path() != null && !notLogin.path().equals("")) {
                     temp = notLogin.path();
                 } else {
+                    // 将注解中配置的白名单追加到原有的配置值后面
                     temp = StringUtils.join((requestMapping.path()), ",");
                 }
 
@@ -81,8 +86,6 @@ public class UpdateValueEnvironmentPostProcessor implements EnvironmentPostProce
         }
 
         return sb.toString();
-
     }
-
 
 }
