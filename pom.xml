@@ -19,6 +19,7 @@
         <module>spring-config-service-demo</module>
         <module>spring-config-nacos-demo</module>
         <module>spring-enviorment-refresh-value</module>
+        <module>spring-aop-redis-cache</module>
     </modules>
 
     <properties>
@@ -40,6 +41,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.23</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
