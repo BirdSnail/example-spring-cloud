@@ -1,5 +1,7 @@
 package com.birdsnail.example;
 
+import com.birdsnail.example.entity.Car;
+import com.birdsnail.example.entity.User;
 import com.birdsnail.example.service.SimpleService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +20,13 @@ public class StartSpringApplication {
 //        simpleService.addPrefix("兰博");
 //        simpleService.addPrefix("兰博");
 //        simpleService.addPrefix("兰博");
-        System.out.println(simpleService.addPrefix(null));
+//        System.out.println(simpleService.addPrefix(null));
+        User user = new User();
+        user.setName("bird");
+        Car car = new Car();
+        car.setModel("BYD");
+        System.out.println(simpleService.updateUser(user, car));
+        System.out.println(simpleService.updateUser(user, car));
 
     }
 }

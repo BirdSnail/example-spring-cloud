@@ -23,7 +23,7 @@ public class RedisCacheAdvice {
     public Object aroundAdvice(ProceedingJoinPoint pjp, RedisCache redisCache) throws Throwable {
 //        System.out.println("before");
         Signature signature = pjp.getSignature();
-        System.out.printf("当前正在被切面的方法：%s", signature.getName());
+        System.out.printf("当前正在被切面的方法：%s\n", signature.getName());
 //        Object proxy = pjp.getThis();
 //        System.out.println("当前代理对象name:" + proxy.getClass().getName());
 //        Object[] args = pjp.getArgs();

@@ -1,5 +1,7 @@
 package com.birdsnail.example.example;
 
+import com.birdsnail.example.entity.Car;
+import com.birdsnail.example.entity.User;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
@@ -10,43 +12,6 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 public class SpelExample {
 
-    public static class User {
-
-        public String name;
-        public int age = 2;
-
-    }
-
-    public static class Car {
-
-        public String make;
-        public String model;
-        private Integer year;
-
-        public String getMake() {
-            return make;
-        }
-
-        public void setMake(String make) {
-            this.make = make;
-        }
-
-        public String getModel() {
-            return model;
-        }
-
-        public void setModel(String model) {
-            this.model = model;
-        }
-
-        public Integer getYear() {
-            return year;
-        }
-
-        public void setYear(Integer year) {
-            this.year = year;
-        }
-    }
 
     /**
      * spel-绑定root object进行评估
@@ -87,7 +52,7 @@ public class SpelExample {
 
     public static void spelVariableTest2() {
         ExpressionParser parser = new SpelExpressionParser();
-        Expression exp = parser.parseExpression("'ips-crm:' +  #name + #user.age"); // name为null时评估返回固定值
+        Expression exp = parser.parseExpression("#name?#'default'"); // name为null时评估返回固定值
         EvaluationContext context = SimpleEvaluationContext.forReadOnlyDataBinding().build();
         User user = new User();
         user.age = 10;
