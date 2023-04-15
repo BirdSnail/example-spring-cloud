@@ -116,41 +116,37 @@ public class SpelExample {
      */
     public static void spelLogicalOperators() {
         ExpressionParser parser = new SpelExpressionParser();
-        Expression expression = parser.parseExpression("#{}");
-        expression.getValue();
+        Expression expression = parser.parseExpression("2 +2");
+        System.out.println("2+2 = " + expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        expression = parser.parseExpression("1 eq 1");
+        System.out.println("1 eq 1 -->" + expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        expression = parser.parseExpression("2 > 1");
+        System.out.println("2是否大于1： " + expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        expression = parser.parseExpression("1 gt 2");
+        System.out.println("1是否大于2：" + expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        expression = parser.parseExpression("250 > 200 && 200 < 4000");
+        System.out.println("[250>200且200<400] -->" + expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        expression = parser.parseExpression("400 > 300 or 150 < 100");
+        System.out.println(expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        expression = parser.parseExpression("2 >1 || 5 <=100");
+        System.out.println("[2>1或5<=100] -->" + expression.getValue());
 
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
-
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
-
-        expression = parser.parseExpression("#{}");
-        expression.getValue();
+        // 三目运算符
+        expression = parser.parseExpression("2 > 1 ? 'a' : 'b'");
+        System.out.println(expression.getValue());
     }
 
 
     public static void main(String[] args) {
 //        spelVariableTest();
 //        spelTemplateTest();
-        spelVariableTest2();
+//        spelVariableTest2();
+        spelLogicalOperators();
     }
 }
