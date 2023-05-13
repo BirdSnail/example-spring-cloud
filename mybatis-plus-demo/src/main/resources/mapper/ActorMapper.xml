@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bridsnail.demo.mybatisplus.mapper.ActorMapper">
+  <resultMap id="BaseResultMap" type="com.bridsnail.demo.mybatisplus.entity.Actor">
+    <!--@mbg.generated-->
+    <!--@Table actor-->
+    <id column="actor_id" jdbcType="SMALLINT" property="actorId" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="last_update" jdbcType="TIMESTAMP" property="lastUpdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    actor_id, first_name, last_name, last_update
+  </sql>
+</mapper>

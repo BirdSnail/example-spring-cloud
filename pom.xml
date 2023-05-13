@@ -20,6 +20,7 @@
         <module>spring-config-nacos-demo</module>
         <module>spring-enviorment-refresh-value</module>
         <module>spring-aop-redis-cache</module>
+        <module>mybatis-plus-demo</module>
     </modules>
 
     <properties>

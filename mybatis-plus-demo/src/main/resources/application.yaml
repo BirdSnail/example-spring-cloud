@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: mybatis-plus-demo
+  datasource:
+    username: root
+    password: Yhd_19941108
+    url: jdbc:mysql://localhost:3306

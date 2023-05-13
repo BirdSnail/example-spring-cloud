@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bridsnail.demo.mybatisplus.mapper.FilmActorMapper">
+  <resultMap id="BaseResultMap" type="com.bridsnail.demo.mybatisplus.entity.FilmActor">
+    <!--@mbg.generated-->
+    <!--@Table film_actor-->
+    <id column="actor_id" jdbcType="SMALLINT" property="actorId" />
+    <id column="film_id" jdbcType="SMALLINT" property="filmId" />
+    <result column="last_update" jdbcType="TIMESTAMP" property="lastUpdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    actor_id, film_id, last_update
+  </sql>
+</mapper>
