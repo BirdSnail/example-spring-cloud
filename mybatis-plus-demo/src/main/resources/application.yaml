@@ -4,4 +4,8 @@ spring:
   datasource:
     username: root
     password: Yhd_19941108
-    url: jdbc:mysql://localhost:3306
+    url: jdbc:mysql://localhost:3306/sakila
+
+logging:
+  level:
+    com.bridsnail.demo.mybatisplus.mapper: debug

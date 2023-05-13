@@ -1,20 +1,19 @@
 package com.bridsnail.demo.mybatisplus.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 @TableName(value = "film_actor")
 public class FilmActor {
-    @TableId(value = "actor_id", type = IdType.INPUT)
-    private Object actorId;
+    @TableField(value = "actor_id")
+    private Integer actorId;
 
-    @TableId(value = "film_id", type = IdType.INPUT)
-    private Object filmId;
+    @TableField(value = "film_id")
+    private Integer filmId;
 
     @TableField(value = "last_update")
     private LocalDateTime lastUpdate;

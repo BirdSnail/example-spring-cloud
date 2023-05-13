@@ -23,4 +23,14 @@
     film_id, title, description, release_year, language_id, original_language_id, rental_duration, 
     rental_rate, `length`, replacement_cost, rating, special_features, last_update
   </sql>
+
+  <select id="selectListByActorId" resultMap="BaseResultMap">
+      select *
+      from film f
+               join film_actor fa using (film_id)
+      where actor_id in
+      <foreach collection="actorIds" open="(" separator="," close=")" item="item">
+          #{item}
+      </foreach>
+  </select>
 </mapper>
