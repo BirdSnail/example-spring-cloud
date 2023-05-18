@@ -48,17 +48,21 @@ public class SpelExample {
         context.setVariable("name", "yanghuaodng");
         String message = exp.getValue(context, String.class);
         System.out.println(message);
+
+        Expression exp2 = parser.parseExpression("#name");
+        String message2 = exp2.getValue(context, String.class);
+        System.out.println("name:" + message2);
     }
 
     public static void spelVariableTest2() {
         ExpressionParser parser = new SpelExpressionParser();
-        Expression exp = parser.parseExpression("#name?#'default'"); // name为null时评估返回固定值
+        Expression exp = parser.parseExpression("#name?:'default'"); // name为null时评估返回固定值
         EvaluationContext context = SimpleEvaluationContext.forReadOnlyDataBinding().build();
         User user = new User();
         user.age = 10;
         user.name = "pikapijjj";
         context.setVariable("user", user);
-        context.setVariable("name", "杨华栋");
+        context.setVariable("name", null);
         String message = exp.getValue(context, String.class);
         System.out.println(message);
     }
@@ -109,9 +113,9 @@ public class SpelExample {
 
 
     public static void main(String[] args) {
-//        spelVariableTest();
+        spelVariableTest();
 //        spelTemplateTest();
-//        spelVariableTest2();
-        spelLogicalOperators();
+        spelVariableTest2();
+//        spelLogicalOperators();
     }
 }

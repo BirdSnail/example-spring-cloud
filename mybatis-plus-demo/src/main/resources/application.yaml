@@ -8,4 +8,4 @@ spring:
 
 logging:
   level:
-    com.bridsnail.demo.mybatisplus.mapper: debug
+    com.bridsnail.demo.mybatisplus: debug
