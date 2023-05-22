@@ -47,5 +47,8 @@ public class SpringCacheDemoStartApplication implements CommandLineRunner {
         cacheExampleService.findUserByName("heihaha");
         cacheExampleService.findUserByName("yhd");
         cacheExampleService.findUserByName("heihaha");
+
+        System.out.println(cacheExampleService.findAllUserByName("yhd"));
+        System.out.println(cacheExampleService.findAllUserByName("yhd"));
     }
 }

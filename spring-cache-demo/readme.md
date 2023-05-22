@@ -41,3 +41,57 @@ public class MyRedisCacheManagerConfiguration {
 
 }
 ```
+### 方法返回类型是List引起的报错
+```java
+@Cacheable(value = "redis-cache2", key = "#root.methodName + '-' + #name")
+public List<User> findAllUserByName(String name) {
+    log.info("获取user by Name, param:{}", name);
+    User user = new User();
+    user.setId(1000);
+    user.setName(name);
+    user.setAge(28);
+    return List.of(user);
+}
+```
+以上代码会报错:`com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class java.lang.Object]: missing type id property '@class'`.
+List.of()是Java17提供的新的api，返回的List是一个final修饰的List，这回导致没有类型元数据信息嵌入到json中。
+```java
+[
+  {
+    "@class":"com.birdsnail.demo.cache.pojo.User",
+    "id":1000,
+    "name":"yhd",
+    "phone":null,
+    "age":28
+  }
+]
+```
+如果返回ArrayList
+```java
+public List<User> findAllUserByName(String name) {
+    log.info("获取user by Name, param:{}", name);
+    User user = new User();
+    user.setId(1000);
+    user.setName(name);
+    user.setAge(28);
+    List<User> res = new ArrayList<>();
+    res.add(user);
+    return res;
+}
+```
+保存到redis时的内容：
+```java
+[
+  "java.util.ArrayList",
+  [
+    {
+      "@class":"com.birdsnail.demo.cache.pojo.User",
+      "id":1000,
+      "name":"yhd",
+      "phone":null,
+      "age":28
+    }
+  ]
+]
+```
+

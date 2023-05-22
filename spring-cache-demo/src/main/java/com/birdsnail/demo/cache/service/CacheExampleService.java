@@ -7,6 +7,9 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
@@ -37,5 +40,19 @@ public class CacheExampleService {
         return user;
     }
 
+    /**
+     * 拼接缓存的key
+     */
+    @Cacheable(value = "redis-cache2", key = "#root.methodName + '-' + #name")
+    public List<User> findAllUserByName(String name) {
+        log.info("获取user by Name, param:{}", name);
+        User user = new User();
+        user.setId(1000);
+        user.setName(name);
+        user.setAge(28);
+        List<User> res = new ArrayList<>();
+        res.add(user);
+        return Collections.singletonList(user);
+    }
 
 }
