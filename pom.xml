@@ -23,6 +23,8 @@
         <module>mybatis-plus-demo</module>
         <module>spring-cache-demo</module>
         <module>spring-easyexcel-demo</module>
+        <module>spring-json</module>
+        <module>base-model</module>
     </modules>
 
     <properties>

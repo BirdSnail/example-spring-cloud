@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: nacos-config-demo
   cloud:
     nacos:
       config:
@@ -7,13 +9,13 @@ spring:
         group: dev
         username: nacos
         password: nacos
+        namespace: ${nacos.namespace}
   profiles:
-#    激活test组配置的全部环境
+    #    激活test组配置的全部环境
     active: test
-#    active: prod
+    #    active: prod
     group:
       test: prod,group1,group2
-
 
 # dev环境配置
 ---
@@ -23,9 +25,23 @@ spring:
       on-profile: dev
     import:
       # 拉取nacos配置：傳入dataId
-      - nacos:person?group=dev
+      - nacos:cat?group=animal
       - classpath:dog.yaml
       - optional:classpath:cat.yaml
+nacos:
+  namespace: 99fbc78b-650f-4fb2-adf9-1d85c18f38ed
+
+# test 环境配置
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+    import:
+      # 拉取nacos配置：傳入dataId
+      - nacos:cat?group=animal
+nacos:
+  namespace: 3b85f0e2-f551-4a87-bf65-c1c3c652be9e
 
 # prod环境配置
 ---
