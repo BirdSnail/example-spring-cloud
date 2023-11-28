@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -26,6 +27,8 @@ public class DictionaryService {
                 .sheet(0)
                 .headRowNumber(1)
                 .doReadSync();
+
+        List<String> sqls = new ArrayList<>();
         for (Map<Integer, String> object : objects) {
             String type = object.get(0);
             String yx = object.get(1); // 有限责任公司
@@ -52,16 +55,21 @@ public class DictionaryService {
                     LookupItem update = new LookupItem();
                     update.setId(et.getId());
                     update.setItemAttr2(value);
-                    lookupItemMapper.updateById(update);
-                    System.out.println("更新成功:" + type + ", itemAttr2:" + value);
+//                    lookupItemMapper.updateById(update);
+//                    System.out.println("更新成功:" + type + ", itemAttr2:" + value);
 
                     String sql = String.format("update crm_lookup_item set item_attr2='%s' where classify_code='ENTERPRICE_OPTIONS_ENTER_TYPE' and item_code='%s';",
                             value, et.getItemCode());
-                    System.out.println("更新语句：" + sql);
+                    sqls.add(sql);
                 }
             }else {
                 System.out.println(type + "--找不到");
             }
+        }
+
+        System.out.println("===============================");
+        for (String sql : sqls) {
+            System.out.println(sql);
         }
     }
 

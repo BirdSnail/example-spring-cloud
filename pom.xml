@@ -26,6 +26,8 @@
         <module>spring-json</module>
         <module>base-model</module>
         <module>spring-boot-demo</module>
+        <module>spring-spel-demo</module>
+        <module>spring-multiple-datasource</module>
     </modules>
 
     <properties>
