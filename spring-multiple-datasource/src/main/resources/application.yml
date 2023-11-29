@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: spring-multiple-datasource-demo
+  datasource:
+    dynamic:
+      primary: local #设置默认的数据源或者数据源组,默认值即为local
+      strict: false #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
+      datasource:
+        dev:
+          username:
+          password:
+        local:
+          username: root
+          password: Yhd_19941108
+          url: jdbc:mysql://localhost:3306/world
+  profiles:
+    active: seata-nacos
+
+logging:
+  level:
+    com.birdsnail.multiple: debug
+---
+spring:
+  config:
+    activate:
+      on-profile: manual #手动创建多数据源
+  datasource:
+    dev:
+      username:
+      password:
+    local:
+      username: root
+      password: Yhd_19941108
+      url: jdbc:mysql://localhost:3306/world
+
+---
+spring:
+  config:
+    activate:
+      on-profile: seata-file
+
+seata:
+  data-source-proxy-mode: AT # 默认就是AT模式（auto transaction）
+  registry:
+    type: file # 默认文件类型
+  config:
+    type: file
+  service:
+    vgroup-mapping:
+      #     当前应用的事务分组关联的seata服务集群名称
+      default_tx_group: default
+    grouplist:
+      default: 127.0.0.1:8091
+  #  指定当前应用的事务分组, 因为多个
+  tx-service-group: default_tx_group
+
+---
+spring:
+  config:
+    activate:
+      on-profile: seata-nacos
+
+seata:
+  data-source-proxy-mode: AT # 默认就是AT模式（auto transaction）
+  registry:
+    type: nacos # 默认文件类型
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace: 3b85f0e2-f551-4a87-bf65-c1c3c652be9e
+      username: nacos
+      password: nacos
+  config:
+    type: file
+  service:
+    vgroup-mapping:
+      #     当前应用的事务分组关联的seata服务集群名称
+      default_tx_group: default
+    grouplist:
+      default: # 通过注册中心获取TC服务地址，此处可以不再配置
+  #  指定当前应用的事务分组, 因为多个
+  tx-service-group: default_tx_group
