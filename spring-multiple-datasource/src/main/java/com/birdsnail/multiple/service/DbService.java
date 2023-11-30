@@ -57,10 +57,15 @@ public class DbService {
 
     @DS("dev")
     @Transactional
-    public void updateDevData(boolean isError, Long labelId) {
+    public void updateDevData(boolean isError, Long labelId)  {
         EcLabel ecLabel = new EcLabel();
         ecLabel.setLastUpdateDate(LocalDateTime.now());
         ecLabelMapper.update(ecLabel, Wrappers.lambdaUpdate(EcLabel.class).eq(EcLabel::getLabelId, labelId));
+        try {
+            Thread.sleep(10000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         if (isError) {
             int a = 1 / 0;
         }

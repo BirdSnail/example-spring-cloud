@@ -36,7 +36,7 @@ DynamicDataSourceContextHolder是一个ThreadLocal封装类，根据当前线程
 
 
 # 多数据源下的事务问题
-### 问题一：多数据源失效
+### 问题1：多数据源失效
 最外层开启普通的事务注解`@Transactional`会导致多数据源切换失效，必须借助MybatisPlus的事务注解`@DSTransactional`.
 ```java
 @DSTransactional
@@ -53,10 +53,10 @@ public void testDsTransaction() {
 # Seata分布式事务框架
 ## 1. 启动server端
 server端的部署有多种模式，具体看[官方文档](https://seata.io/zh-cn/docs/ops/deploy-guide-beginner)
-### 直接部署
+### 方式1：直接部署
 没什么好说的，直接启动即可
 
-### Nacos作为注册中心和配置中心
+### 方式2：Nacos作为注册中心和配置中心进行部署
 #### 踩坑
 - nacos的namespace配置要填id，不能是名称
 ## 2. client端接入
