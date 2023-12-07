@@ -1,12 +1,15 @@
-package com.birdsnail.multiple.service;
+package service;
 
 import com.birdsnail.multiple.base.City;
 import com.birdsnail.multiple.base.EcLabel;
+import com.birdsnail.multiple.service.DbService;
+import com.birdsnail.multiple.service.DbTransactionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class DbTransactionServiceTest {

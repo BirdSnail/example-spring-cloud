@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: mybatis-plus-demo
+  datasource:
+    username: root
+    password: Yhd_19941108
+    url: jdbc:mysql://localhost:3306/sakila
+  config:
+    activate:
+      on-profile:
+        - plus-demo
+
+logging:
+  level:
+    com.bridsnail.demo.mybatisplus: debug
+
+
+#mybatis配置
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

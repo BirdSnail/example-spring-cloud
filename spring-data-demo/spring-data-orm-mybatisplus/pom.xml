@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.birdsnail</groupId>
-        <artifactId>example-spring-cloud</artifactId>
+        <artifactId>spring-data-demo</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>mybatis-plus-demo</artifactId>
+    <artifactId>spring-data-orm-mybatisplus</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>

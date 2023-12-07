@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.birdsnail</groupId>
-        <artifactId>example-spring-cloud</artifactId>
+        <artifactId>spring-data-demo</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>spring-multiple-datasource</artifactId>
+    <artifactId>spring-data-multiple-datasource</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.birdsnail</groupId>
-            <artifactId>mybatis-plus-demo</artifactId>
+            <artifactId>spring-data-orm-mybatisplus</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.baomidou/dynamic-datasource-spring-boot-starter -->

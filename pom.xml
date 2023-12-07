@@ -20,14 +20,13 @@
         <module>spring-config-nacos-demo</module>
         <module>spring-enviorment-refresh-value</module>
         <module>spring-aop-redis-cache</module>
-        <module>mybatis-plus-demo</module>
         <module>spring-cache-demo</module>
         <module>spring-easyexcel-demo</module>
         <module>spring-json</module>
         <module>base-model</module>
         <module>spring-boot-demo</module>
         <module>spring-spel-demo</module>
-        <module>spring-multiple-datasource</module>
+        <module>spring-data-demo</module>
     </modules>
 
     <properties>
