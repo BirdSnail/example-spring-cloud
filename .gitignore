@@ -30,3 +30,4 @@ build/
 ### VS Code ###
 .vscode/
 /spring-cache-demo/src/main/resources/redis.yaml
+config.yaml
