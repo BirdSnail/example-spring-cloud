@@ -1,3 +1,5 @@
 spring:
   application:
     name: spring-aop-redis-cache-example
+  config:
+    import: classpath:redis.yaml

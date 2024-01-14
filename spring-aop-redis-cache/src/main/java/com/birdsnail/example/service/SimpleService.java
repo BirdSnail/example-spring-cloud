@@ -1,7 +1,7 @@
 package com.birdsnail.example.service;
 
 import com.alibaba.fastjson2.JSON;
-import com.birdsnail.example.aop.RedisCache;
+import com.birdsnail.example.aop.cache.RedisCache;
 import com.birdsnail.example.entity.Car;
 import com.birdsnail.example.entity.User;
 import org.springframework.stereotype.Service;
