@@ -1,0 +1,24 @@
+spring:
+  config:
+    import: classpath:user.yml
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
+      mode: always
+  jpa:
+    #    大坑，如果使用Hibernate作为orm框架来初始化数据库，请设置此选项
+    defer-datasource-initialization: true
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+  jackson:
+    default-property-inclusion: non_null

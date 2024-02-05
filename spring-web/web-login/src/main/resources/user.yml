@@ -1,0 +1,23 @@
+user:
+  - name: admin
+    password: admin
+    roles:
+      - admin
+  - name: yhd
+    password: hello
+    roles:
+      - auth
+      - test
+  - name: test
+    password: test
+    roles:
+      - default
+roleList:
+  - role: admin
+    resource: /**
+  - role: auth
+    resource: /auth/**
+  - role: test
+    resource: /test/hello
+  - role: default
+    resource: /test/hello
