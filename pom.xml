@@ -28,6 +28,7 @@
         <module>spring-spel-demo</module>
         <module>spring-data-demo</module>
         <module>spring-web</module>
+        <module>spring-boot-configuration-processor-demo</module>
     </modules>
 
     <properties>

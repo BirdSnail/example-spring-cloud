@@ -1,0 +1,114 @@
+{
+  "groups": [
+    {
+      "name": "demo.processor",
+      "type": "com.birdsnail.configurationprocessor.demo.config.DemoProperties",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.city",
+      "type": "com.birdsnail.configurationprocessor.demo.config.DemoProperties$City",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.school",
+      "type": "com.birdsnail.configurationprocessor.demo.config.School",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "demo.processor.city.name",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties$City"
+    },
+    {
+      "name": "demo.processor.city.no",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties$City"
+    },
+    {
+      "name": "demo.processor.hobbies",
+      "type": "java.lang.String[]",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.name",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.name-cn",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.name-en",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.school.address",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.School"
+    },
+    {
+      "name": "demo.processor.school.name",
+      "type": "java.lang.String",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.School"
+    },
+    {
+      "name": "demo.processor.school.no",
+      "type": "java.lang.Integer",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.School"
+    },
+    {
+      "name": "demo.processor.sex-enum",
+      "type": "com.birdsnail.configurationprocessor.demo.config.DemoProperties$SexEnum",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties"
+    },
+    {
+      "name": "demo.processor.single",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.birdsnail.configurationprocessor.demo.config.DemoProperties",
+      "defaultValue": false
+    }
+  ],
+  "hints": [
+    {
+      "name": "demo.processor.sex-enum",
+      "values": [
+        {
+          "value": "man",
+          "description": "man."
+        },
+        {
+          "value": "woman",
+          "description": "woman."
+        }
+      ]
+    },
+    {
+      "name": "demo.processor.single",
+      "values": [
+        {
+          "value": true,
+          "description": "yes."
+        },
+        {
+          "value": false,
+          "description": "no."
+        }
+      ]
+    },
+    {
+      "name": "demo.processor.name",
+      "values": [
+        {
+          "value": "yanghuadong",
+          "description": "杨华栋"
+        }
+      ]
+    }
+  ]
+}
