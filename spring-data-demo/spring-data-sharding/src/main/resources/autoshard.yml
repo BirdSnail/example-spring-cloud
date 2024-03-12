@@ -1,0 +1,41 @@
+spring:
+  # 自动分库分表配置
+  shardingsphere:
+    datasource:
+      # 默认数据源
+      sharding:
+        default-data-source-name: db_master
+      names: db_master
+      db_master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/yhdtest?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
+        username: root
+        password: Yhd_19941108
+    rules:
+      sharding:
+        tables:
+          # t_user配置
+          t_user:
+            actual-data-nodes: db_master.tb_user_$->{0..1}
+            # 表路由配置
+            table-strategy:
+              standard:
+                sharding-column: id
+                sharding-algorithm-name: table_inline
+            # 主键生成策略
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake
+        sharding-algorithms:
+          # 表路由算法
+          table_inline:
+            type: INLINE
+            props:
+              algorithm-expression: tb_user_$->{id % 2}
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
+    props:
+      sql-show: true
+      sql-comment-parse-enabled: true

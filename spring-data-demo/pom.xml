@@ -16,11 +16,12 @@
         <module>spring-data-h2-database</module>
         <module>spring-data-multiple-datasource</module>
         <module>spring-data-orm-mybatisplus</module>
+        <module>spring-data-sharding</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -29,6 +30,11 @@
             <groupId>com.birdsnail</groupId>
             <artifactId>base-model</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.31</version>
         </dependency>
     </dependencies>
 
