@@ -14,8 +14,16 @@ spring:
     #    激活test组配置的全部环境
     active: test
     #    active: prod
-    group:
-      test: prod,group1,group2
+#    group:
+#      test: prod,group1,group2
+
+test:
+  dog:
+    color: 黄色
+    name: 本地配置小狗
+  user:
+    name: yang
+    age: 23
 
 # dev环境配置
 ---
@@ -40,6 +48,7 @@ spring:
     import:
       # 拉取nacos配置：傳入dataId
       - nacos:cat?group=animal
+      - nacos:dog?group=animal
 nacos:
   namespace: 3b85f0e2-f551-4a87-bf65-c1c3c652be9e
 
