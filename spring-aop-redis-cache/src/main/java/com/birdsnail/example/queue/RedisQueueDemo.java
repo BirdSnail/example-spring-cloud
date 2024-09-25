@@ -66,4 +66,10 @@ public class RedisQueueDemo implements CommandLineRunner {
         consumerMap.replaceAll((t, v) -> Boolean.FALSE);
         queue.delete();
     }
+
+    public void restart() {
+        queue.delete();
+        queue = redissonClient.getBoundedBlockingQueue("recreate-queue");
+        queue.trySetCapacity(10);
+    }
 }

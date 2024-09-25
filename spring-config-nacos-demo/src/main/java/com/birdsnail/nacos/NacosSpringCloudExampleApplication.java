@@ -25,6 +25,7 @@ public class NacosSpringCloudExampleApplication {
 
         System.out.println("=========spring config nacos配置=============");
         System.out.println(environment.getProperty("cat.name"));
+        System.out.println(environment.getProperty("demo1.name"));
 
     }
 

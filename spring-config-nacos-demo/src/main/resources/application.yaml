@@ -49,6 +49,7 @@ spring:
       # 拉取nacos配置：傳入dataId
       - nacos:cat?group=animal
       - nacos:dog?group=animal
+      - nacos:demo.yaml?group=DEFAULT_GROUP
 nacos:
   namespace: 3b85f0e2-f551-4a87-bf65-c1c3c652be9e
 

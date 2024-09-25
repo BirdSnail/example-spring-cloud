@@ -31,7 +31,10 @@ public class StartSpringApplication {
 //        System.out.println(simpleService.updateUser(user, car));
 
 //        testRedisRateLimit(applicationContext);
-        testRedisQueue(applicationContext.getBean(RedisQueueDemo.class));
+
+        // 队列
+//        testRedisQueue(applicationContext.getBean(RedisQueueDemo.class));
+        testRedisQueueRestart(applicationContext.getBean(RedisQueueDemo.class));
     }
 
     private static void testRedisRateLimit(ConfigurableApplicationContext applicationContext) {
@@ -67,6 +70,18 @@ public class StartSpringApplication {
         }
 
         redisQueueDemo.delete();
+    }
+
+    private static void testRedisQueueRestart(RedisQueueDemo redisQueueDemo) {
+        redisQueueDemo.restart();
+        int i = 0;
+        while (i < 10) {
+            i++;
+            String data = i + "  -- " + RandomUtil.randomString(10);
+            redisQueueDemo.push(data);
+            System.out.println("》》》》》》推送数据：" + data);
+        }
+
     }
 
 
