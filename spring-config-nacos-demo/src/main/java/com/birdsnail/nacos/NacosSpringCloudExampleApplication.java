@@ -1,11 +1,13 @@
 package com.birdsnail.nacos;
 
+import com.purgeteam.dynamic.config.starter.annotation.EnableDynamicConfigEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
+@EnableDynamicConfigEvent
 public class NacosSpringCloudExampleApplication {
 
     public static void main(String[] args) {
